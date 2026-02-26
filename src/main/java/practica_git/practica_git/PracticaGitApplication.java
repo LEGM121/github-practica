@@ -15,7 +15,7 @@ public class PracticaGitApplication {
   }
     @GetMapping("/despedir")
     public String despedir() {
-        return "¡Adiós, gracias por participar en la práctica de Git!";
+        return "¡Adiós, gracias participar en la práctica de Git -HUB!";
 
     }
 	public static void main(String[] args) {
