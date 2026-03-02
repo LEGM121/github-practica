@@ -14,7 +14,7 @@ pipeline {
     // Stage 1: Clonar el repositorio
     stage('Clonar repositorio') {
       steps {
-        git branch: 'main', url: env.C_REPO_URL
+        git branch: 'master', url: env.C_REPO_URL
       }
     }
 
