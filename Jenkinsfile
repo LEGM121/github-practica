@@ -8,8 +8,8 @@ pipeline {
     }
 
     tools {
-        maven 'Maven'
-        jdk 'JDK17'
+         maven 'Maven Apache'
+
     }
 
     stages {
