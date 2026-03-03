@@ -16,13 +16,14 @@ pipeline {
             }
 
         }
+        stage('Clean Workspace') {
+            steps{
+                sh 'mvn clean'
+            }
+        }
     }
-    stage('Clean Workspace') {
-      steps{
-          sh 'mvn clean'
-      }
-    }
-    
+
+
 
 
 
