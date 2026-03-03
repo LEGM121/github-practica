@@ -1,5 +1,4 @@
 pipeline {
-  pipeline {
   	agent any
   	tools {
   		nodejs 'NodeJS'
@@ -35,4 +34,4 @@ pipeline {
       echo 'Pipeline CD falló'
     }
   }
-}
+  }
