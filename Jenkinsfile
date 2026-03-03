@@ -4,7 +4,7 @@ pipeline {
         nodejs 'NodeJS'
     }
     environment {
-        DOCKER_HUB_CREDENTIALS_ID = 'luisgo121'
+        DOCKER_HUB_CREDENTIALS_ID = 'github-practica'
         DOCKER_HUB_REPO = 'luisgo121/api-rest-world-image'
     }
     stages {
