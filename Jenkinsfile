@@ -1,20 +1,30 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven'
+
+    environment {
+        IMAGE_NAME = 'luisgo121/api-rest-world-image'
+        DOKERHUB_CREDENTIALS = credentials('dockerhub')
+
+
     }
 
-    stages {
+    Stages {
+        stage ('chekout') {
+            steps {
+                echo "Checking salida code SCM"
+                checkout scm
+            }
 
-        stage('checkout') {
-            steps {
-                git 'https://github.com/LEGM121/github-practica.git'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
         }
     }
+    stage('Clean Workspace') {
+      steps{
+          sh 'mvn clean'
+      }
+    }
+    
+
+
+
+
 }
