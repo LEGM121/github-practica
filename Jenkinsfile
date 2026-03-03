@@ -15,10 +15,10 @@ pipeline {
                 sh 'npm install'
             }
         }
-        
+
         }
 
-    }
+
 
     post {
         success {
