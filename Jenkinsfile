@@ -1,24 +1,16 @@
 pipeline {
     agent any
-
+    tools {
+        nodejs 'NodeJS'
+    }
     environment {
-        IMAGE_NAME = 'luisgo121/api-rest-world-image'
-        DOKERHUB_CREDENTIALS = credentials('dockerhub')
-
-
+        DOCKER_HUB_CREDENTIALS_ID = 'luisgo121'
+        DOCKER_HUB_REPO = 'luisgo121/api-rest-world-image'
     }
-
-    Stages {
-        stage ('chekout') {
+    stages {
+        stage('Checkout Github') {
             steps {
-                echo "Checking salida code SCM"
-                checkout scm
-            }
-
-        }
-        stage('Clean Workspace') {
-            steps{
-                sh 'mvn clean'
+                git branch: 'master',  credentialsId: 'github-practica', url: 'https://github.com/LEGM121/github-practica.git'
             }
         }
     }
@@ -26,6 +18,4 @@ pipeline {
 
 
 
-
-
-}
+    }
