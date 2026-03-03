@@ -1,35 +1,20 @@
 pipeline {
     agent any
     tools {
-        nodejs 'NodeJS'
+        maven 'maven-3.6.3'
     }
 
     stages {
-        stage('Checkout Github') {
+
+        stage('checkout') {
             steps {
-                git branch: 'master', credentialsId: 'github-practica', url: 'https://github.com/LEGM121/github-practica.git'
+                git 'https://github.com/LEGM121/github-practica.git'
             }
         }
-        stage('Build Docker Image'){
+        stage('Build') {
             steps {
-                script {
-                    dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
-                }
+                sh 'mvn clean package'
             }
-        }
-            }
-
-    
-
-
-
-
-    post {
-        success {
-            echo 'Pipeline CD ejecutado correctamente'
-        }
-        failure {
-            echo 'Pipeline CD falló'
         }
     }
 }
