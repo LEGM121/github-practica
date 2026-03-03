@@ -19,5 +19,18 @@ pipeline {
                 git branch: 'master',  url: 'https://github.com/LEGM121/github-practica.git'
             }
         }
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
+                }
+            }
+        }
     }
 }
