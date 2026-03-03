@@ -10,15 +10,17 @@ pipeline {
                 git branch: 'master', credentialsId: 'github-practica', url: 'https://github.com/LEGM121/github-practica.git'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build Docker Image'){
             steps {
                 script {
-                        docker.build("nodeimage" + "$BUILD_NUMBER")
+                    dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
                 }
             }
+        }
+            }
 
-    }
-    }
+    
+
 
 
 
