@@ -11,4 +11,13 @@ pipeline {
         maven 'Maven'
         jdk 'JDK'
     }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: '\'https://github.com/LEGM121/github-practica.git'
+            }
+        }
+    }
 }
