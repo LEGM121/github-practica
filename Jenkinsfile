@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "luisgo121/api-rest-world-image"
         DOCKER_TAG = "${BUILD_NUMBER}"
-        DOCKER_CREDENTIALS_ID = "dockerhub-credentials"
+        DOCKER_HOST = "tcp://localhost:2375"
     }
 
     tools {
@@ -24,15 +24,23 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
             }
         }
-
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
-
-
-                                }
-
+                powershell '''
+                docker build -t $env:IMAGE_NAME:$env:IMAGE_TAG .
+                '''
+            }
         }
+
+        stage('Push Docker Image') {
+            steps {
+                powershell '''
+                docker tag $env:IMAGE_NAME:$env:IMAGE_TAG usuario/$env:IMAGE_NAME:$env:IMAGE_TAG
+                docker push usuario/$env:IMAGE_NAME:$env:IMAGE_TAG
+                '''
+            }
+        }
+
 
     }
 }
