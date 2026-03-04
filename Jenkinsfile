@@ -20,14 +20,19 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build con Maven') {
             steps {
-                sh '''
-                docker build -t $env:IMAGE_NAME:$env:IMAGE_TAG .
-                '''
+                sh 'mvn clean package -DskipTests'
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
+                '''
+            }
+        }
 
 
     }
