@@ -19,10 +19,10 @@ pipeline {
                 git branch: 'master',  url: 'https://github.com/LEGM121/github-practica.git'
             }
         }
-        
+
         stage('Build Docker Image') {
             steps {
-                powershell '''
+                sh '''
                 docker build -t $env:IMAGE_NAME:$env:IMAGE_TAG .
                 '''
             }
