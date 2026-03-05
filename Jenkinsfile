@@ -6,9 +6,7 @@ pipeline {
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
 
-    tools {
-        maven 'Maven'
-    }
+  
 
     stages {
 
