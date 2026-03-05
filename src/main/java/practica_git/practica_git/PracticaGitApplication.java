@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PracticaGitApplication {
   @GetMapping("/saludar")
   public String saludar() {
-    return "¡Hola, a todos, bienvenidos a la práctica de Git!";
+    return "¡Hola, a todos bienvenidos a la práctica de Git!";
 
   }
     @GetMapping("/despedir")
