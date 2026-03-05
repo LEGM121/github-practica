@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "luisgo121/api-rest-world-image"
         DOCKER_TAG = "${BUILD_NUMBER}"
-        DOCKER_HOST = "tcp://172.17.0.1:2375"
+       
     }
 
     tools {
