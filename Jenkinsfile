@@ -5,11 +5,6 @@ pipeline {
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
 
-
-
-
-  
-
     stages {
 
         stage('Clean Workspace') {
